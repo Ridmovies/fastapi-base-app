@@ -38,6 +38,52 @@ Origin course: https://github.com/mahenzon/FastAPI-base-app
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
+
+## Installation
+### Installation for Linux with Virtual Environment
+*  #### Clone the repo
+   ```bash
+   git clone https://github.com/Ridmovies/fastapi-base-app.git
+   ```  
+   
+* #### Enter the application root folder: 
+```bash
+cd <root folder>
+```
+   
+* #### Create a virtual environment in the project's root folder:
+```bash
+python3 -m venv .venv 
+```
+
+* #### Activate the virtual environment:
+```bash
+source .venv/bin/activate 
+```
+
+* #### Install dependencies for the production environment: 
+```bash
+pip install -r requirements.txt 
+```
+
+* #### Change .env file
+1. Create postgres database or launch postgres docker 
+2. Rename '.env.template' to '.env'
+3. Replace the settings with your own
+
+* #### Start your application using Uvicorn in root folder :
+ ``` 
+uvicorn src.main:app --host 127.0.0.1 --port 8000 --reload 
+```
+
+<!-- USAGE EXAMPLES -->
+## Usage
+
+* ### OpenAPI (Swagger UI) Documentation
+        http://127.0.0.1:8000/docs
+
+
+
 ## Develop 
 ### Poetry Dependency Management System
 ### Creating a New Project

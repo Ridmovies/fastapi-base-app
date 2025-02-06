@@ -32,10 +32,29 @@ Origin course: https://github.com/mahenzon/FastAPI-base-app
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
-* FastApi
 * Poetry
+* FastApi
+* SQLAlchemy
+* Postgresql+asyncpg (Docker compose)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- ROADMAP -->
+## Roadmap
+
+- [x] Poetry
+- [x] Readme.md
+- [x] .env Settings and Environment Variables 
+- [] async database (Docker compose)
+- [x] example app "posts"
+- [] Unittest with Pytest
+- [] Auth app
+    - [] bearer access jwt token
+    - [] hashed password + salt
+    - [] refresh token
+- [] Admin Panel
+- [] Docker
+    - [] Docker compose
 
 
 
@@ -127,5 +146,52 @@ poetry show --tree
 ```bash
 poetry remove <package_name>
 ```
+
+## Docker
+## Commands for working with Docker and Docker Compose
+These commands will help you manage containers and images in your project, providing a convenient development and testing process.
+
+### Creating an image from a Dockerfile
+```bash
+docker build -t image_name .
+```
+
+### Run a container from an image
+```bash
+docker run -p 8000:8000 image_name
+```
+
+### Remove all containers
+```bash
+docker rm $(docker ps -aq)
+```
+
+### Remove all images
+```bash
+docker rmi $(docker images -q)
+```
+
+### Stop and remove all services and images
+
+```bash
+docker-compose down --rmi all
+```
+
+### To start a console inside a running Docker container, use the docker exec command
+```bash
+docker exec -it container_name bash
+```
+
+### Run the container in interactive mode to gain shell access inside the container:
+```bash
+docker run -it --rm -p 9000:8000 container_name sh
+```
+
+### Build a new image and run containers
+
+```bash
+docker-compose up --build
+```
+This command builds a new image based on the instructions in `docker-compose.yml`.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

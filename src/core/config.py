@@ -18,6 +18,7 @@ class DatabaseConfig(BaseModel):
     max_overflow: int = 10
 
 
+
 class Settings(BaseSettings):
     # DATABASE_URL: str
 
@@ -32,7 +33,6 @@ class Settings(BaseSettings):
     run: RunConfig = RunConfig()
     api: ApiPrefix = ApiPrefix()
     db: DatabaseConfig = DatabaseConfig()
-
 
 
 settings = Settings()

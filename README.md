@@ -194,6 +194,49 @@ docker-compose up --build
 ```
 This command builds a new image based on the instructions in `docker-compose.yml`.
 
+
+## Alembic
+
+### Creating async an Environment
+```bash
+alembic init --template async alembic
+```
+
+### change env.py
+?async_fallback=True param for async database
+```
+config = context.config
+# if don't use --template async
+# config.set_main_option("sqlalchemy.url", f"{settings.DATABASE_URL}?async_fallback=True")
+config.set_main_option("sqlalchemy.url", settings.DATABASE_URL)
+target_metadata = Base.metadata
+```
+Import models
+```
+from src.backend.dev.models import Song # noqa
+from src.backend.products.models import Product # noqa
+```
+
+### Generate first migration
+```bash
+alembic revision --autogenerate -m "initial migration"
+```
+
+### Apply generated migration to the database:
+```bash
+alembic upgrade head
+```
+
+### Rolls back the last applied migration.
+```bash
+alembic downgrade -1
+```
+
+## black
+```bash
+black --diff --color ./
+```
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 

@@ -1,7 +1,8 @@
 from sqlalchemy import MetaData
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.orm import declared_attr
 
+from src.core.models.mixins.int_id_pk import IntIdPkMixin
 from src.utils import camel_case_to_snake_case
 
 
@@ -14,7 +15,7 @@ naming_convention = {
 }
 
 
-class Base(DeclarativeBase):
+class Base(DeclarativeBase, IntIdPkMixin):
     __abstract__ = True
 
     metadata = MetaData(
@@ -24,5 +25,3 @@ class Base(DeclarativeBase):
     @declared_attr.directive
     def __tablename__(cls) -> str:
         return f"{camel_case_to_snake_case(cls.__name__)}s"
-
-    id: Mapped[int] = mapped_column(primary_key=True)

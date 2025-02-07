@@ -7,7 +7,7 @@ router = APIRouter(
     prefix=settings.api.v1.prefix,
 )
 
-router = APIRouter(
-    prefix=settings.api.prefix,
+router.include_router(
+    users_router,
+    prefix=settings.api.v1.users,
 )
-
